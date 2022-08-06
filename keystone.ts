@@ -32,7 +32,7 @@ export default withAuth(
   // Using the config function helps typescript guide you to the available options.e
   config({
     server: {
-      // cors: { origin: ["https://kapymarket.web.app"], credentials: true },
+      cors: { origin: ["https://kapymarket.web.app"], credentials: true },
       port,
       maxFileSize: 200 * 1024 * 1024,
       healthCheck: true,
