@@ -30,7 +30,7 @@ export default withAuth(
   config({
     server: {
       cors: { origin: ['https://kapymarket.web.app/'], credentials: true },
-      port: 7777,
+      port: 3000,
       maxFileSize: 200 * 1024 * 1024,
       healthCheck: true,
     },
