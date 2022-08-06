@@ -15,6 +15,7 @@ import { withAuth, session } from './auth';
 
 // Database URL from .env
 const databaseUrl = process.env.DATABASE_URL || "capybara string";
+const shadowDatabaseUrl = process.env.SHADOW_DATABASE_URL || "oi";
 // lists schema
 import { Product } from './schemas/Products';
 import { User } from './schemas/User';
@@ -37,10 +38,11 @@ export default withAuth(
     db: {
       provider: 'postgresql',
       url: databaseUrl,
+      shadowDatabaseUrl,
       onConnect: async context => { },
       // Optional advanced configuration
       // enableLogging: true,
-      useMigrations: true,
+      useMigrations: false,
       idField: { kind: 'uuid' }
     },
     lists: {
