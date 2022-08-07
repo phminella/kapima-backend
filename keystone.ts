@@ -43,7 +43,7 @@ export default withAuth(
       shadowDatabaseUrl,
       onConnect: async (context) => {},
       // Optional advanced configuration
-      // enableLogging: true,
+      enableLogging: true,
       useMigrations: false,
       idField: { kind: "uuid" },
     },
