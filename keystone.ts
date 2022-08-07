@@ -40,7 +40,9 @@ export default withAuth(
     db: {
       provider: "postgresql",
       url: databaseUrl,
-      onConnect: async (context) => {},
+      onConnect: async (context) => {
+        console.log(context);
+      },
       // Optional advanced configuration
       enableLogging: true,
       useMigrations: false,
