@@ -1,5 +1,5 @@
-import 'dotenv/config';
-import { sendPasswordResetEmail } from './lib/mail';
+import "dotenv/config";
+import { sendPasswordResetEmail } from "./lib/mail";
 /*
 Welcome to the auth file! Here we have put a config to do basic auth in Keystone.
 
@@ -9,24 +9,24 @@ Welcome to the auth file! Here we have put a config to do basic auth in Keystone
 For more on auth, check out: https://keystonejs.com/docs/apis/auth#authentication-api
 */
 
-import { createAuth } from '@keystone-6/auth';
+import { createAuth } from "@keystone-6/auth";
 
 // See https://keystonejs.com/docs/apis/session#session-api for the session docs
-import { statelessSessions } from '@keystone-6/core/session';
+import { statelessSessions } from "@keystone-6/core/session";
 
 let sessionSecret = process.env.COOKIE_SECRET;
 // Here we define how auth relates to our schemas.
 // What we are saying here is that we want to use the list `User`, and to log in
 // we will need their email and password.
 const { withAuth } = createAuth({
-  listKey: 'User',
-  identityField: 'email',
-  sessionData: 'id name email',
-  secretField: 'password',
+  listKey: "User",
+  identityField: "email",
+  sessionData: "id name email",
+  secretField: "password",
   initFirstItem: {
     // If there are no items in the database, keystone will ask you to create
     // a new user, filling in these fields.
-    fields: ['name', 'email', 'password'],
+    fields: ["name", "email", "password"],
   },
   passwordResetLink: {
     sendToken: async (args) => {
@@ -43,8 +43,11 @@ let sessionMaxAge = 60 * 60 * 24 * 30; // 30 days
 // This defines how sessions should work. For more details, check out: https://keystonejs.com/docs/apis/session#session-api
 const session = statelessSessions({
   maxAge: sessionMaxAge,
-  secret: sessionSecret!, 
+  secret: sessionSecret!,
+  secure: false,
+  // path: "/",
+  // domain: "https://kapima.herokuapp.com/",
+  sameSite: "none",
 });
 
 export { withAuth, session };
-
