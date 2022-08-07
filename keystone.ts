@@ -40,11 +40,11 @@ export default withAuth(
     db: {
       provider: "postgresql",
       url: databaseUrl,
-      shadowDatabaseUrl,
       onConnect: async (context) => {},
       // Optional advanced configuration
       enableLogging: true,
       useMigrations: false,
+
       idField: { kind: "uuid" },
     },
     lists: {
@@ -56,6 +56,9 @@ export default withAuth(
       Order,
     },
     extendGraphqlSchema,
+    graphql: {
+    playground:true
+    },
     ui: {
       // TODO: change this for roles
       isAccessAllowed: ({ session }) => {
