@@ -59,6 +59,7 @@ export default withAuth(
     ui: {
       // TODO: change this for roles
       isAccessAllowed: ({ session }) => {
+        console.log(session);
         return !!session?.data;
       },
     },
