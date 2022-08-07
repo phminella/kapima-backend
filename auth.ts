@@ -44,7 +44,6 @@ let sessionMaxAge = 60 * 60 * 24 * 30; // 30 days
 const session = statelessSessions({
   maxAge: sessionMaxAge,
   secret: sessionSecret!,
-  secure: false,
   // path: "/",
   // domain: "https://kapima.herokuapp.com/",
   sameSite: "none",
